@@ -10,13 +10,17 @@ namespace SnakeGameWinforms
 {
     class Snake
     {
-        public int Step { get; } = 20;
-        public int HorVelocity { get; set; } = 0;
-        public int VerVelocity { get; set; } = 0;
+
+        private Game game = null;
+        
+        public int Step { get; private set; } = 20;
+        public int HorVelocity { get; private set; } = 0;
+        public int VerVelocity { get; private set; } = 0;
 
         public List<PictureBox> body = new List<PictureBox>();
-        public Snake()
+        public Snake(Game gameInstance)
         {
+            game = gameInstance;
             InitializeSnake();
         }
 
@@ -70,6 +74,24 @@ namespace SnakeGameWinforms
             this.VerVelocity = 0;
         }
 
+        public void Grow()
+        {
+            PictureBox pixel = new PictureBox();
+            pixel.BackColor = Color.Red;
+            pixel.Width = 20;
+            pixel.Height = 20;
+            pixel.Location = body[0].Location;
+
+            body.Add(pixel);
+
+            game.Controls.Add(pixel);
+            pixel.BringToFront();
+        }
+
+        public void Move()
+        {
+
+        }
 
     }
 }

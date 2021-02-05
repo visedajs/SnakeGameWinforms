@@ -31,7 +31,7 @@ namespace SnakeGameWinforms
             gameZone = new GameZone();
             this.Controls.Add(gameZone);
 
-            snake = new Snake();
+            snake = new Snake(this);
             this.Controls.Add(snake.body[0]);
             snake.body[0].BringToFront();
         }
@@ -68,6 +68,9 @@ namespace SnakeGameWinforms
                     break;
                 case Keys.P:
                     snake.Stop();
+                    break;
+                case Keys.Q:
+                    snake.Grow();
                     break;
             }
         }
