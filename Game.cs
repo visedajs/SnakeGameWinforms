@@ -39,15 +39,14 @@ namespace SnakeGameWinforms
         private void InitializeMainTimer()
         {
             mainTimer = new Timer();
-            mainTimer.Interval = 500;
+            mainTimer.Interval = 50;
             mainTimer.Tick += MainTimer_Tick;
             mainTimer.Start();
         }
 
         private void MainTimer_Tick(object sender, EventArgs e)
         {
-            snake.body[0].Left += snake.HorVelocity * snake.Step;
-            snake.body[0].Top += snake.VerVelocity * snake.Step;            
+            snake.Move();
         }
 
         private void Game_KeyDown(object sender, KeyEventArgs e)

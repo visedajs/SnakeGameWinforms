@@ -13,7 +13,7 @@ namespace SnakeGameWinforms
 
         private Game game = null;
         
-        public int Step { get; private set; } = 20;
+        public int Step { get; private set; } = 5;
         public int HorVelocity { get; private set; } = 0;
         public int VerVelocity { get; private set; } = 0;
 
@@ -25,6 +25,7 @@ namespace SnakeGameWinforms
         }
 
         private void InitializeSnake()
+
         {
             PictureBox pixel = new PictureBox();
             pixel.BackColor = Color.Red;
@@ -35,6 +36,7 @@ namespace SnakeGameWinforms
 
             body.Add(pixel);
         }
+
 
         /// <summary>
         /// Turn snake
@@ -90,6 +92,14 @@ namespace SnakeGameWinforms
 
         public void Move()
         {
+
+            for (int i = body.Count - 1; i > 0; i--)
+            {
+                body[i].Location = body[i - 1].Location;
+            }
+
+            body[0].Left += this.HorVelocity * this.Step;
+            body[0].Top += this.VerVelocity * this.Step;
 
         }
 
